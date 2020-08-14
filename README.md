@@ -12,3 +12,6 @@ timer for answering/quickfire round
 marathon mode?
 select no of players
 leaderboard
+
+
+https://www.figma.com/file/hfyKH4njVysztJlDcKfrYS/Untitled?node-id=2%3A4
