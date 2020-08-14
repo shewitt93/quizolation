@@ -10,4 +10,5 @@ limit of # of qs
 append wrong answers to end screen, showing correct ones
 timer for answering/quickfire round
 marathon mode?
-
+select no of players
+leaderboard
