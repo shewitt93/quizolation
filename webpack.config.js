@@ -1,35 +1,43 @@
-const path = require('path')
-const webpack = require('webpack')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-
+const path = require("path");
+const webpack = require("webpack");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-  entry: './src/index.js',
+  entry: "./src/index.js", // the main JavaScript file of the app/project
   output: {
-    path: path.resolve('dist'),
-    filename: 'bundle.js'
+    // instructions for compiling the code
+    path: path.resolve("dist"), // the file where the compiled code should go
+    filename: "bundle.js", // the file name of the compiled code
   },
-  devtool: 'source-maps',
+  devtool: "source-maps", // a tool to find errors in the compiled code, but show them against the source code for easier debugging
   module: {
+    // modules/helpers we want Webpack to use
     rules: [
-      { test: /\.jsx?$/, loader: 'babel-loader', exclude: /node_modules/ },
-      { test: /\.css$/, loader: ['style-loader', 'css-loader'] },
-      { test: /\.s(a|c)ss$/, loader: ['style-loader', 'css-loader', 'sass-loader'] }
-    ]
+      // instructions for the modules/helpers
+      { test: /\.jsx?$/, loader: "babel-loader", exclude: /node_modules/ }, // transpile JSX files
+      { test: /\.css$/, loader: ["style-loader", "css-loader"] }, // transpile css files
+      {
+        test: /\.s(a|c)ss$/,
+        loader: ["style-loader", "css-loader", "sass-loader"],
+      }, // transpile sass/scss files
+    ],
   },
   devServer: {
-    contentBase: path.resolve('src'),
-    hot: true,
-    open: true,
-    port: 8000,
-    watchContentBase: true
+    // instructions for the development server
+    contentBase: path.resolve("src"), // location of the source code
+    hot: true, // refresh the browser when changes are saved
+    open: true, // open the app/project in the browser when the server starts
+    port: 8888, // use this port for the server
+    watchContentBase: true, // watch for changes to static files
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
+    // plugins we are using
+    new webpack.HotModuleReplacementPlugin(), // update changed modules without page reload
     new HtmlWebpackPlugin({
-      template: 'public/index.html',
-      filename: 'index.html',
-      inject: 'body'
-    })
-  ]
-}
+      // add JavaScript code to the HTML
+      template: "public/index.html",
+      filename: "index.html",
+      inject: "body",
+    }),
+  ],
+};

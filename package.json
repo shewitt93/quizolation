@@ -1,5 +1,5 @@
 {
-  "name": "Lap-2-project",
+  "name": "react",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -7,18 +7,10 @@
     "start": "webpack-dev-server --mode-development",
     "build": "webpack -p"
   },
-  "repository": {
-    "type": "git",
-    "url": ""
-  },
-  "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": ""
-  },
-  "homepage": "",
   "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.10.4",
     "babel-loader": "^8.1.0",
     "css-loader": "^4.0.0",
     "html-webpack-plugin": "^4.3.0",
@@ -35,6 +27,9 @@
     "@babel/preset-react": "^7.10.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-router-dom": "^5.2.0"
+    "react-router-dom": "^5.2.0",
+    "react-spotify-api": "^3.0.0",
+    "redux": "^4.0.5",
+    "redux-devtools-extension": "^2.13.8"
   }
 }
