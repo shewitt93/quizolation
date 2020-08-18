@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { InputPage, NavBar } from "../components";
+import InputPage from "../components/InputPage";
 
 class QuizForm extends Component {
   render() {

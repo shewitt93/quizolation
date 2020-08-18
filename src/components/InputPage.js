@@ -1,53 +1,27 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import "regenerator-runtime/runtime";
 
 class InputPage extends Component {
   state = {
-    playerOne: "",
-    playerTwo: "",
-    playerThree: "",
-    playerFour: "",
     numberOfQuestions: "",
     difficulty: "",
     category: "",
-    questions: [],
   };
-
   populateState = (e) => {
     e.preventDefault;
     const property = e.target.name;
     const propValue = e.target.value;
     this.setState({ ...this.state, [property]: propValue });
-    console.log(property);
-    console.log(propValue);
-    console.log(this.state);
   };
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.setState(
-      {
-        playerOne: e.target.playerOne.value,
-        playerTwo: e.target.playerTwo.value,
-        playerThree: e.target.playerThree.value,
-        playerFour: e.target.playerFour.value,
-        numberOfQuestions: e.target.numberOfQuestions.value,
-        difficulty: e.target.difficulty.value,
-        category: e.target.category.value,
-      },
-
-      () => {
-        fetch(
-          `https://opentdb.com/api.php?amount=${this.state.numberOfQuestions}&category=${this.state.category}&difficulty=${this.state.difficulty}&type=multiple`
-        )
-          .then((res) => res.json())
-          .then((data) => {
-            console.log(data.results);
-            console.log(this.state);
-          })
-          .catch(console.log);
-      }
-    );
+    this.setState({
+      numberOfQuestions: e.target.numberOfQuestions.value,
+      difficulty: e.target.difficulty.value,
+      category: e.target.category.value,
+    });
   };
 
   render() {
@@ -150,7 +124,9 @@ class InputPage extends Component {
 
           <input type="submit" value="submit" />
 
-          <Link to={`/questionspage/`}>
+          <Link
+            to={`/questionspage/${this.state.numberOfQuestions}/${this.state.difficulty}/${this.state.category}`}
+          >
             <button className="start-game-button">Start Game</button>
           </Link>
         </form>

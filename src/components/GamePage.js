@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 
-class QuestionPages extends Component {
+class GamePage extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -144,4 +144,4 @@ class QuestionPages extends Component {
   }
 }
 
-export default QuestionPages;
+export default GamePage;

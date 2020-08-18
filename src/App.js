@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import { Switch, Route } from "react-router-dom";
-import { NavBar, QuestionPage } from "./components";
-import { QuizForm, ResultsPage } from "./container";
+import NavBar from "./components/NavBar";
+import QuizForm from "./container/QuizForm";
+import ResultsPage from "./container/ResultsPage";
+import GamePage from "./components/GamePage";
+import QuestionPage from "./container/QuestionPage";
 
 class App extends Component {
   state = {};
@@ -21,9 +24,14 @@ class App extends Component {
           <Route path="/homepage" exact component={QuizForm} />
 
           <Route
-            path="/questionspage:qNumber"
-            exact
+            path="/questionspage/:numberOfQuestions/:difficulty/:category"
             render={(props) => <QuestionPage {...props} />}
+          />
+
+          <Route
+            path="/question/:qNumber"
+            exact
+            render={(props) => <Question {...props} />}
           />
 
           <Route path="/resultspage" component={ResultsPage} />
