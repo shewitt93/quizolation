@@ -8,7 +8,7 @@ class QuestionPage extends Component {
     this.state = {
       numberOfQuestions: 1,
       difficulty: null,
-      category: null,
+      category: "",
       questions: [],
     };
   }
