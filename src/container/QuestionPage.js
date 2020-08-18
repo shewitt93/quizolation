@@ -6,54 +6,12 @@ class QuestionPage extends Component {
   constructor() {
     super();
     this.state = {
-      // playersNumber: null,
       numberOfQuestions: 1,
       difficulty: null,
       category: null,
       questions: [],
-      // userNames: {},
-      // userScores: {},
-      // totalScore: 0,
     };
   }
-
-  // addUserNames = (num) => {
-  //   let html = [];
-  //   for (let i = 0; i < num; i++) {
-  //     html.push(
-  //       <div className="name-input">
-  //         <label key={i + 1}>
-  //           {`Player ${i + 1}:`}
-  //           <input
-  //             className="name-input-box"
-  //             type="text"
-  //             value={this.state.userNames[i]}
-  //             name={`${i}`}
-  //             onChange={this.updateUsers}
-  //             placeholder="Name"
-  //             required
-  //           />
-  //         </label>
-  //       </div>
-  //     );
-  //   }
-
-  //   return html;
-  // };
-
-  // updateUsers = (e) => {
-  //   const obj = e.target.name;
-  //   const name = e.target.value;
-  //   this.setState({ userNames: { ...this.state.userNames, [obj]: name } });
-  //   this.setState({ userScores: { ...this.state.userScores, [name]: 0 } });
-  //   for (let i = 0; i < Object.keys(this.state.userNames).length; i++) {
-  //     for (let j = 0; j < Object.keys(this.state.userNames).length; j++) {
-  //       if (i !== j && this.state.userNames[i] === this.state.userNames[j]) {
-  //         alert("Two users can not have the same name");
-  //       }
-  //     }
-  //   }
-  // };
 
   componentDidMount() {
     this.setState({
@@ -82,58 +40,29 @@ class QuestionPage extends Component {
     }
   };
 
-  // totalScore = (n, user) => {
-  //   this.setState({
-  //     userScores: {
-  //       ...this.state.userScores,
-  //       [user]: this.state.userScores[user] + n,
-  //     },
-  //   });
-  // };
-
   render() {
-    return this.state.questions.map((item, idx) => (
-      <div key={idx}>
-        <h3 dangerouslySetInnerHTML={{ __html: item.category }} />
-        <ul>
-          <li dangerouslySetInnerHTML={{ __html: item.question }} />
-          <li>{item.correct_answer}</li>
-        </ul>
+    return (
+      <div className="game-page-container">
+        <form className="name-form">
+          <Link
+            to={{
+              pathname: "/question/0",
+              state: {
+                qNumber: 0,
+                questionState: this.state,
+              },
+            }}
+          >
+            <input
+              type="submit"
+              value="Start Game"
+              className="start-game-button-2"
+            />
+          </Link>
+        </form>
       </div>
-    ));
-
-    // <div className="game-page-container">
-    //   <form className="name-form">
-    //     <div className="name-form-title">
-    //       <label>
-    //         Enter player name{this.state.playersNumber > 1 ? "s" : ""}
-    //       </label>
-    //     </div>
-
-    //     {this.addUserNames(this.state.playersNumber)}
-
-    //     {Object.keys(this.state.userScores).length !== 0 ? (
-    //       <Link
-    //         to={{
-    //           pathname: "/question/0",
-    //           state: {
-    //             qNumber: 0,
-    //             questionState: this.state,
-    //             previousQuestionScores: this.state.userScores,
-    //           },
-    //         }}
-    //       >
-    //         <input
-    //           type="submit"
-    //           value="Start Game"
-    //           className="start-game-button-2"
-    //         />
-    //       </Link>
-    //     ) : (
-    //       ""
-    //     )}
-    //   </form>
-    // </div>
+    );
   }
 }
+
 export default QuestionPage;

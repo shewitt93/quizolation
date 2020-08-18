@@ -5,6 +5,7 @@ import QuizForm from "./container/QuizForm";
 import ResultsPage from "./container/ResultsPage";
 import GamePage from "./components/GamePage";
 import QuestionPage from "./container/QuestionPage";
+import Question from "./components/Question";
 
 class App extends Component {
   state = {};

@@ -15,15 +15,6 @@ class InputPage extends Component {
     this.setState({ ...this.state, [property]: propValue });
   };
 
-  handleSubmit = (e) => {
-    e.preventDefault();
-    this.setState({
-      numberOfQuestions: e.target.numberOfQuestions.value,
-      difficulty: e.target.difficulty.value,
-      category: e.target.category.value,
-    });
-  };
-
   render() {
     return (
       <main>
@@ -121,8 +112,6 @@ class InputPage extends Component {
             <option value="27">Animals</option>
             <option value="28">Vehicles</option>
           </select>
-
-          <input type="submit" value="submit" />
 
           <Link
             to={`/questionspage/${this.state.numberOfQuestions}/${this.state.difficulty}/${this.state.category}`}
