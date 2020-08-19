@@ -4,6 +4,10 @@ import "regenerator-runtime/runtime";
 
 class InputPage extends Component {
   state = {
+    player1: "",
+    player2: "",
+    player3: "",
+    player4: "",
     numberOfQuestions: "4",
     difficulty: "easy",
     category: "9",
@@ -23,32 +27,41 @@ class InputPage extends Component {
   };
 
   render() {
+    console.log(this.state);
     return (
       <main>
         <form onSubmit={this.confirmSettings}>
           <h2>Please enter names of players</h2>
           <input
+            onChange={this.populateState}
+            value={this.state.player1.value}
             type="text"
             id="playerOne"
-            name="playerOne"
+            name="player1"
             placeholder="Player 1"
           ></input>
           <input
+            onChange={this.populateState}
+            value={this.state.player2.value}
             type="text"
             id="playerTwo"
-            name="playerTwo"
+            name="player2"
             placeholder="Player 2"
           ></input>
           <input
+            onChange={this.populateState}
+            value={this.state.player3.value}
             type="text"
             id="playerThree"
-            name="playerThree"
+            name="player3"
             placeholder="Player 3"
           ></input>
           <input
+            onChange={this.populateState}
+            value={this.state.player4.value}
             type="text"
             id="playerFour"
-            name="playerFour"
+            name="player4"
             placeholder="Player 4"
           ></input>
 

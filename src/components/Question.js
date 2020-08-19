@@ -19,16 +19,50 @@ class Question extends Component {
   };
 
   render() {
+    console.log(this.props.userScore);
+    let renderAnswers = this.shuffleArray();
+
     return (
       <div>
-        <h4>Question {this.props.match.params.qNumber}</h4>
-        <h2>{this.props.question.text}</h2>
-        <h3>{this.shuffleArray()}</h3>
+        <form onSubmit={this.props.checkAnswer}>
+          <h3>Number: {this.props.match.params.qNumber}</h3>
+          <h2>Question: {this.props.question.question}</h2>
 
-        <div>
-          <div className="next-question-button-container">
-            <button onClick={this.props.next}>Next Question</button>
-          </div>
+          <input
+            required
+            type="radio"
+            name="answer"
+            id="1"
+            value={renderAnswers[0]}
+          ></input>
+          <label htmlFor="1">{renderAnswers[0]}</label>
+          <input
+            type="radio"
+            name="answer"
+            id="2"
+            value={renderAnswers[1]}
+          ></input>
+          <label htmlFor="2nd">{renderAnswers[1]}</label>
+          <input
+            type="radio"
+            name="answer"
+            id="3"
+            value={renderAnswers[2]}
+          ></input>
+          <label htmlFor="3">{renderAnswers[2]}</label>
+          <input
+            type="radio"
+            name="answer"
+            id="4"
+            value={renderAnswers[3]}
+          ></input>
+          <label htmlFor="4">{renderAnswers[3]}</label>
+          <input type="submit" value="Submit Answer"></input>
+        </form>
+        <div>{this.state.userScore}</div>
+
+        <div className="next-question-button-container">
+          <button onClick={this.props.next}>Next Question</button>
         </div>
       </div>
     );

@@ -3,7 +3,6 @@ import { Switch, Route, withRouter } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import QuizForm from "./container/QuizForm";
 import ResultsPage from "./container/ResultsPage";
-
 import QuestionPage from "./container/QuestionPage";
 
 class App extends Component {
@@ -11,11 +10,34 @@ class App extends Component {
     numberOfQuestions: 0,
     difficulty: "",
     category: "",
+    player1: "",
+    player2: "",
+    player3: "",
+    player4: "",
+    userScore: 0,
   };
 
   setQuizSettings = (settings) => {
-    const { numberOfQuestions, difficulty, category } = settings;
-    this.setState({ numberOfQuestions, difficulty, category });
+    const {
+      numberOfQuestions,
+      difficulty,
+      category,
+      player1,
+      player2,
+      player3,
+      player4,
+      userScore,
+    } = settings;
+    this.setState({
+      numberOfQuestions,
+      difficulty,
+      category,
+      player1,
+      player2,
+      player3,
+      player4,
+      userScore,
+    });
     console.log("redirect to /questions");
     this.props.history.push("/questions");
   };
@@ -46,6 +68,11 @@ class App extends Component {
                 numberOfQuestions={this.state.numberOfQuestions}
                 difficulty={this.state.difficulty}
                 category={this.state.category}
+                player1={this.state.player1}
+                player2={this.state.player2}
+                player3={this.state.player3}
+                player4={this.state.player4}
+                userScore={this.state.userScore}
               />
             )}
           />

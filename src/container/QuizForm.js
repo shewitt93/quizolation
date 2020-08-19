@@ -5,7 +5,7 @@ class QuizForm extends Component {
   render() {
     return (
       <div className="Quiz-Form-container">
-        <InputPage set={this.props.set}/>
+        <InputPage set={this.props.set} />
       </div>
     );
   }

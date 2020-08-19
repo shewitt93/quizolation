@@ -7,6 +7,11 @@ class QuestionPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      player1: props.player1,
+      player2: props.player2,
+      player3: props.player3,
+      player4: props.player4,
+      userScore: 0,
       numberOfQuestions: props.numberOfQuestions,
       difficulty: props.difficulty,
       category: props.category,
@@ -55,13 +60,21 @@ class QuestionPage extends Component {
       this.setState({ currentQuestionIdx: nextIdx });
     }
   };
+  checkAnswer = (e) => {
+    e.preventDefault();
+
+    let score = this.state.userScore + 1;
+    this.setState({ userScore: score });
+    console.log(score);
+  };
 
   render() {
+    console.log(this.state.userScore);
     return (
       <div className="game-page-container">
         {!this.state.inPlay && (
           <form onSubmit={this.startGame}>
-            <input type="text" placeholder="Your name" />
+            <div>Are you ready {this.state.player1}?</div>
             <input type="submit" value="Let's go!" />
           </form>
         )}
@@ -70,6 +83,7 @@ class QuestionPage extends Component {
           path="/questions/:qNumber"
           render={(props) => (
             <Question
+              checkAnswer={this.checkAnswer}
               next={this.goToNextQuestion}
               question={this.state.questions[this.state.currentQuestionIdx - 1]}
             />
