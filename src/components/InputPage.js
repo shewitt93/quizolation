@@ -15,14 +15,12 @@ class InputPage extends Component {
     this.setState({ ...this.state, [property]: propValue });
   };
 
-  // Beth
-  confirmSettings = e => {
+  confirmSettings = (e) => {
     e.preventDefault();
-    // const { numberOfQuestions, difficulty, category } = e.target
-    console.log('confirming settings')
-    this.props.set(this.state)
-  }
-  //--
+
+    console.log("confirming settings");
+    this.props.set(this.state);
+  };
 
   render() {
     return (
@@ -122,18 +120,7 @@ class InputPage extends Component {
             <option value="28">Vehicles</option>
           </select>
 
-          {/* Beth */}
-          {/* <button onClick={this.confirmSettings} className="start-game-button">Start Game</button> */}
-          <input type="submit" value="Start Game"/>
-          {/* -- */}
-
-          {/* Simon */}
-          {/* <Link
-            to={`/questionspage/${this.state.numberOfQuestions}/${this.state.difficulty}/${this.state.category}`}
-          >
-            <button className="start-game-button">Start Game</button>
-          </Link> */}
-          {/* -- */}
+          <input type="submit" value="Start Game" />
         </form>
       </main>
     );

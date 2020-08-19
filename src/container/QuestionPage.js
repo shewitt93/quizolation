@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link, Route } from "react-router-dom";
-// import GamePage from "../components/GamePage";
+
 import Question from "../components/Question";
 
 class QuestionPage extends Component {
@@ -12,16 +12,11 @@ class QuestionPage extends Component {
       category: props.category,
       questions: [],
       currentQuestionIdx: 0,
-      inPlay: false
+      inPlay: false,
     };
   }
 
   componentDidMount() {
-    // this.setState({
-    //   difficulty: this.props.match.params.difficulty,
-    //   category: this.props.match.params.category,
-    //   numberOfQuestions: this.props.match.params.numberOfQuestions,
-    // });
     this.getQuestions();
   }
   getQuestions = async () => {
@@ -43,72 +38,43 @@ class QuestionPage extends Component {
     }
   };
 
-  // Beth
-  startGame = e => {
-    e.preventDefault()
-    this.setState({ inPlay: true })
-    // debugger
-    // this.props.history.push(`/questions/${this.state.currentQuestionIdx + 1}`)
-    this.goToNextQuestion()
-  }
+  startGame = (e) => {
+    e.preventDefault();
+    this.setState({ inPlay: true });
+
+    this.goToNextQuestion();
+  };
 
   goToNextQuestion = () => {
-    // console.log(this.state.currentQuestionIdx, this.state.questions.length)
-    if(this.state.currentQuestionIdx >= this.state.questions.length){
-      // this.setState({ inPlay: false })
-      console.log('to results!')
-      // this.history.push(`/results`)
+    if (this.state.currentQuestionIdx >= this.state.questions.length) {
+      this.props.history.push("/results");
     } else {
-      console.log('to next question', this.state.currentQuestionIdx)
-      const nextIdx = this.state.currentQuestionIdx + 1 
-      this.props.history.push(`/questions/${nextIdx}`)
-      this.setState({ currentQuestionIdx: nextIdx })
+      console.log("to next question", this.state.currentQuestionIdx);
+      const nextIdx = this.state.currentQuestionIdx + 1;
+      this.props.history.push(`/questions/${nextIdx}`);
+      this.setState({ currentQuestionIdx: nextIdx });
     }
-  }
-  // --
+  };
 
   render() {
     return (
       <div className="game-page-container">
-        {/* Beth */}
-        { !this.state.inPlay && 
+        {!this.state.inPlay && (
           <form onSubmit={this.startGame}>
-            <input type="text" placeholder="Your name"/>
-            <input type="submit" value="Let's go!"/>
+            <input type="text" placeholder="Your name" />
+            <input type="submit" value="Let's go!" />
           </form>
-        }
+        )}
 
-        
         <Route
           path="/questions/:qNumber"
-          render={(props) => <Question 
-                                next={this.goToNextQuestion} 
-                                question={this.state.questions[this.state.currentQuestionIdx - 1]}
-                              />}
-        />
-
-        {/* -- */}
-        
-        {/* Simon */}
-        {/* <form className="name-form">
-          <Link
-            to={{
-              pathname: "/question/0",
-              state: {
-                qNumber: 0,
-                questionState: this.state,
-              },
-            }}
-          >
-            <input
-              type="submit"
-              value="Start Game"
-              className="start-game-button-2"
+          render={(props) => (
+            <Question
+              next={this.goToNextQuestion}
+              question={this.state.questions[this.state.currentQuestionIdx - 1]}
             />
-          </Link>
-        </form> */}
-        {/* -- */}
-
+          )}
+        />
       </div>
     );
   }
