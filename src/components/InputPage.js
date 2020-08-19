@@ -4,9 +4,9 @@ import "regenerator-runtime/runtime";
 
 class InputPage extends Component {
   state = {
-    numberOfQuestions: "",
-    difficulty: "",
-    category: "",
+    numberOfQuestions: "4",
+    difficulty: "easy",
+    category: "9",
   };
   populateState = (e) => {
     e.preventDefault;
@@ -15,10 +15,19 @@ class InputPage extends Component {
     this.setState({ ...this.state, [property]: propValue });
   };
 
+  // Beth
+  confirmSettings = e => {
+    e.preventDefault();
+    // const { numberOfQuestions, difficulty, category } = e.target
+    console.log('confirming settings')
+    this.props.set(this.state)
+  }
+  //--
+
   render() {
     return (
       <main>
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.confirmSettings}>
           <h2>Please enter names of players</h2>
           <input
             type="text"
@@ -113,11 +122,18 @@ class InputPage extends Component {
             <option value="28">Vehicles</option>
           </select>
 
-          <Link
+          {/* Beth */}
+          {/* <button onClick={this.confirmSettings} className="start-game-button">Start Game</button> */}
+          <input type="submit" value="Start Game"/>
+          {/* -- */}
+
+          {/* Simon */}
+          {/* <Link
             to={`/questionspage/${this.state.numberOfQuestions}/${this.state.difficulty}/${this.state.category}`}
           >
             <button className="start-game-button">Start Game</button>
-          </Link>
+          </Link> */}
+          {/* -- */}
         </form>
       </main>
     );

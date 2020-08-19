@@ -1,71 +1,83 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
 class Question extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      questionNumber: parseInt(this.props.match.params.qNumber),
-      questionInfo: this.props.location.state.questionState,
-      previousQuestionNumber: null,
-      answerArray: [],
-      hasFetched: false,
+      // questionNumber: parseInt(this.props.match.params.qNumber),
+      // questionInfo: this.props.location.state.questionState,
+      // previousQuestionNumber: null,
+      // answerArray: [],
     };
   }
 
-  componentDidMount() {
-    this.getParam();
-  }
-  getParam = () => {
-    this.setState({
-      previousQuestionNumber: parseInt(
-        this.props.match.params.previousQuestionNumber
-      ),
-    });
-  };
-  componentDidUpdate() {
-    this.shuffleArray();
-  }
+  // componentDidMount() {
+  //   this.getParam();
+  // }
+  // getParam = () => {
+  //   this.setState({
+  //     previousQuestionNumber: parseInt(
+  //       this.props.match.params.
+  //     ),
+  //   });
+  // };
+
+  // componentDidUpdate() {
+  //   this.shuffleArray();
+  // }
+
+  // componentDidUpdate() {
+  //   console.log('question mounting')
+  //   this.shuffleArray();
+  // }
+
+
   shuffleArray = () => {
     let answers = [];
     answers.push(
-      this.state.questionInfo.questions[this.state.questionNumber]
-        .correct_answer
+      this.props.question.correct_answer
     );
-    this.state.questionInfo.questions[
-      this.state.questionNumber
-    ].incorrect_answers.forEach((answer) => answers.push(answer));
+    this.props.question.incorrect_answers.forEach((answer) => answers.push(answer));
     answers.sort(() => Math.random() - 0.5);
-    this.setState({ answerArray: answers, hasFetched: true });
+    // this.setState({ answerArray: answers });
+    return answers
   };
-  shouldComponentUpdate() {
-    if (this.state.hasFetched) {
-      return false;
-    }
-    return true;
-  }
+
+  // shouldComponentUpdate(nextProps, nextState) {
+  //     nextState.answerArray[0]
+  // }
 
   render() {
-    let questionNumber = this.state.previousQuestionNumber;
-    let nextQuestionNumber = questionNumber + 1;
-    let queNumber = this.props.location.state.qNumber;
-    let nextQNumber = queNumber + 1;
-    let nextQueNumber = this.state.questionNumber + 1;
-    let nextQNumberString = nextQueNumber.toString();
+    // let questionNumber = this.state.previousQuestionNumber;
+    // let nextQuestionNumber = questionNumber + 1;
+    // let queNumber = this.props.location.state.qNumber;
+    // let nextQNumber = queNumber + 1;
+    // let nextQueNumber = this.state.questionNumber + 1;
+    // let nextQNumberString = nextQueNumber.toString();
 
     // let state = this.props.location.state.questionInfo;
 
-    let stateNext = this.state;
+    // let stateNext = this.state;
 
-    console.log(this.state.previousQuestionNumber);
+    // console.log(this.state.previousQuestionNumber);
 
     return (
       <div>
-        <h4>Question {this.state.questionNumber + 1}</h4>
-        <h3>{this.state.answerArray}</h3>
+        <h4>Question {this.props.match.params.qNumber}</h4>
+        <h2>{this.props.question.text}</h2>
+        <h3>{this.shuffleArray()}</h3>
 
         <div>
+          {/* Beth */}
           <div className="next-question-button-container">
+            <button onClick={this.props.next}>Next Question</button>
+          </div>
+
+          {/* -- */}
+
+          {/* Simon */}
+          {/* <div className="next-question-button-container">
             {nextQuestionNumber + 1 ==
             this.state.questionInfo.questions.length ? (
               <Link
@@ -102,7 +114,8 @@ class Question extends Component {
                 />
               </Link>
             )}
-          </div>
+          </div> */}
+          {/* -- */}
           <span>hello</span>
         </div>
       </div>
@@ -110,4 +123,4 @@ class Question extends Component {
   }
 }
 
-export default Question;
+export default withRouter(Question);
