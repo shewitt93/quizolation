@@ -36,7 +36,7 @@ class QuestionPage extends Component {
       response = await fetch(url);
       data = await response.json();
     }
-    if (data.response_code !== 0) {
+    if (data.response_code !== 0) { // why is this condition repeated? (see ln. 34)
       console.log("not enought questions in the api");
     } else {
       this.setState({ questions: data.results });
@@ -62,7 +62,7 @@ class QuestionPage extends Component {
   };
   checkAnswer = (e) => {
     e.preventDefault();
-
+    // no check to see if the answer is correct?
     let score = this.state.userScore + 1;
     this.setState({ userScore: score });
     console.log(score);

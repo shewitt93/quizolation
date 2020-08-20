@@ -35,6 +35,11 @@ class Question extends Component {
             id="1"
             value={renderAnswers[0]}
           ></input>
+
+          {/* htmlFor is an accessor to be called on a node
+          to set in html tag you can use for:
+          <label for="1">{renderAnswers[0]}</label>
+          */}
           <label htmlFor="1">{renderAnswers[0]}</label>
           <input
             type="radio"

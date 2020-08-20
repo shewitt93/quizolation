@@ -101,6 +101,7 @@ class InputPage extends Component {
             <option value="" disabled>
               Choose a topic...
             </option>
+            {/* Could this be made simpler by iteration over a collection? */}
             <option value="9">General Knowledge</option>
             <optgroup label="Entertainment">
               <option value="10">Entertainment: Books</option>

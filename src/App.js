@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { Switch, Route, withRouter } from "react-router-dom";
 import NavBar from "./components/NavBar";
+
+// for readability it could be nice to bring these imports together via an index
+// import { QuizForm, ResultsPage, QuestionPage from './container'}
 import QuizForm from "./container/QuizForm";
 import ResultsPage from "./container/ResultsPage";
 import QuestionPage from "./container/QuestionPage";
@@ -10,6 +13,7 @@ class App extends Component {
     numberOfQuestions: 0,
     difficulty: "",
     category: "",
+    // could this be an array of players instead?
     player1: "",
     player2: "",
     player3: "",
@@ -56,7 +60,7 @@ class App extends Component {
 
           <Route
             exact
-            path="/homepage"
+            path="/homepage" // bit of a misleading route name. Usually we refer to '/' as 'homepage'
             render={() => <QuizForm set={this.setQuizSettings} />}
           />
 
