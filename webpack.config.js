@@ -27,7 +27,7 @@ module.exports = {
     contentBase: path.resolve("src"), // location of the source code
     hot: true, // refresh the browser when changes are saved
     open: true, // open the app/project in the browser when the server starts
-    port: 8888, // use this port for the server
+    port: 3000, // use this port for the server
     watchContentBase: true, // watch for changes to static files
   },
   plugins: [

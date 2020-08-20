@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
+
+* {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* imports */
+/* edited h1 tagline, moved inside header and removed h4 quiz */
+/* wrapped Switch > hello there in a div with className */
+/* added footer */
+/* added classname in navbar component and app.js line 53 */
+/* added classname in question.js outer div */
+/* added div around question in in question.js component */
+/* added form/div ids in question.js and dangerous html */
+/* results page placeholders and navlink */
+/* moved labels above radio button and added line break  */
+/* add quiz form button to landing page */
+/* make Quizolation title link back to homepage */
+
+/* creating a component for landing page */
+
+
+.content {
+    border: 2px solid grey;
+    border-radius: 5px;
+    width: 70%;
+    height: 50vh;
+    margin: 50px auto;
+    text-align: center;
+    padding: 20px;
+
+}
+
+.navlink {
+    text-decoration: none;
+}
+
+h1:hover{
+    cursor: pointer;
+    color: rgb(61, 148, 61);
+}
+
+header, header h1, footer {
+    background-color: grey;
+    color: white;
+    padding: 30px;
+    width: 100%;
+    /* text-align: center; */
+}
+
+.newGame {
+    width: 140px;
+    padding: 10px;
+    background-color: green;
+    color: white;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    margin-top: 10px ;
+    text-decoration: none;
+}
+
+.newGame:hover {
+    cursor: pointer;
+    background-color: rgb(61, 148, 61);
+}
+
+footer {
+    bottom: 0;
+    position: fixed;
+}
+
+.navbar {
+    background-color: grey;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    margin: 0 auto;
+
+}
+
+.navbar a {
+    text-decoration: none;
+    color: white;
+}
