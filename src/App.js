@@ -18,7 +18,6 @@ class App extends Component {
     player2: "",
     player3: "",
     player4: "",
-    userScore: 0,
   };
 
   setQuizSettings = (settings) => {
@@ -30,7 +29,6 @@ class App extends Component {
       player2,
       player3,
       player4,
-      userScore,
     } = settings;
     this.setState({
       numberOfQuestions,
@@ -40,7 +38,6 @@ class App extends Component {
       player2,
       player3,
       player4,
-      userScore,
     });
     console.log("redirect to /questions");
     this.props.history.push("/questions");
@@ -76,12 +73,16 @@ class App extends Component {
                 player2={this.state.player2}
                 player3={this.state.player3}
                 player4={this.state.player4}
-                userScore={this.state.userScore}
               />
             )}
           />
 
-          <Route path="/results" component={ResultsPage} />
+          <Route
+            path="/results"
+            render={(props) => (
+              <ResultsPage {...props} userScore={this.state.userScore} />
+            )}
+          />
         </Switch>
 
         <footer>Footer text here</footer>

@@ -6,9 +6,7 @@ import '../styles/ResultsPage.css';
 
 
 class ResultsPage extends Component {
-  state = {
-    userScore: this.props.userScore,
-  };
+  state = {};
 
   render() {
     return (
@@ -20,6 +18,7 @@ class ResultsPage extends Component {
         <div>{this.state.userScore}</div>
         
         <NavLink to="/homepage" className="playAgain">Play again?</NavLink>
+      
       </div>
     );
   }

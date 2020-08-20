@@ -1,7 +1,8 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import { Link, Route } from "react-router-dom";
 
 import Question from "../components/Question";
+import ResultsPage from "./ResultsPage";
 
 class QuestionPage extends Component {
   constructor(props) {
@@ -11,7 +12,16 @@ class QuestionPage extends Component {
       player2: props.player2,
       player3: props.player3,
       player4: props.player4,
-      userScore: 0,
+      userScore: {
+        players: [
+          { player1s: "0" },
+          { player2s: "" },
+          { player3s: "" },
+          { player4s: "0" },
+        ],
+        scores: [{ score1: 0 }, { score2: 0 }, { score3: 0 }, { score4: 0 }],
+      },
+
       numberOfQuestions: props.numberOfQuestions,
       difficulty: props.difficulty,
       category: props.category,
@@ -42,6 +52,9 @@ class QuestionPage extends Component {
       this.setState({ questions: data.results });
     }
   };
+  componentWillUnmount() {
+    this.getQuestions();
+  }
 
   startGame = (e) => {
     e.preventDefault();
@@ -60,16 +73,27 @@ class QuestionPage extends Component {
       this.setState({ currentQuestionIdx: nextIdx });
     }
   };
+
   checkAnswer = (e) => {
     e.preventDefault();
 
-    let score = this.state.userScore + 1;
-    this.setState({ userScore: score });
-    console.log(score);
+    const value = e.target.answer.value;
+    console.log(
+      this.state.questions[this.state.currentQuestionIdx - 1].correct_answer
+    );
+    if (value === this.state.questions[this.state.currentQuestionIdx - 1]) {
+      this.setState(this.state.userScore.useState(player1) + 1);
+    } else if (
+      value !==
+      this.state.questions[this.state.currentQuestionIdx - 1].correct_answer
+    ) {
+      this.setState(this.state.userScore.player1);
+    }
   };
 
   render() {
-    console.log(this.state.userScore);
+    console.log({ ...this.state.userScore.scores.score1 });
+
     return (
       <div className="game-page-container">
         {!this.state.inPlay && (
@@ -86,9 +110,14 @@ class QuestionPage extends Component {
               checkAnswer={this.checkAnswer}
               next={this.goToNextQuestion}
               question={this.state.questions[this.state.currentQuestionIdx - 1]}
+              // score={this.state.userScore}
             />
           )}
         />
+        {/* <Route
+          path="/results"
+          render={(props) => <ResultsPage score={this.state.userScore} />}
+        /> */}
       </div>
     );
   }

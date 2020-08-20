@@ -8,6 +8,14 @@ class Question extends Component {
     super(props);
     this.state = {};
   }
+  // componentDidUpdate(prevProps, prevState) {
+  //   // check whether client has changed
+  //   console.log(prevProps.question);
+  //   console.log(this.props.question);
+  //   if (prevProps.question.question !== this.props.question.question) {
+  //     this.shuffleArray();
+  //   }
+  // }
 
   shuffleArray = () => {
     let answers = [];
@@ -16,12 +24,12 @@ class Question extends Component {
       answers.push(answer)
     );
     answers.sort(() => Math.random() - 0.5);
+    // this.setState({ hasUpdated: true });
 
     return answers;
   };
 
   render() {
-    console.log(this.props.userScore);
     let renderAnswers = this.shuffleArray();
 
     return (
@@ -75,7 +83,7 @@ class Question extends Component {
           <button onClick={this.props.next}>Next Question</button>
         </div>
         </form>
-        <div>{this.state.userScore}</div>
+        {/* <div>{this.props.score}</div> */}
 
         
       </div>

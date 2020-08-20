@@ -10,6 +10,7 @@ class InputPage extends Component {
     player2: "",
     player3: "",
     player4: "",
+
     numberOfQuestions: "4",
     difficulty: "easy",
     category: "9",
