@@ -4,6 +4,10 @@ import NavBar from "./components/NavBar";
 import QuizForm from "./container/QuizForm";
 import ResultsPage from "./container/ResultsPage";
 import QuestionPage from "./container/QuestionPage";
+import LandingPage from "./container/LandingPage";
+import { NavLink } from "react-router-dom";
+import './styles/App.css';
+
 
 class App extends Component {
   state = {
@@ -44,15 +48,15 @@ class App extends Component {
 
   render() {
     return (
+      <div id="app">
       <main className="quiz">
-        <h1>Quizolation</h1>
-        <h4>quiz</h4>
         <header>
-          <NavBar />
+          <NavLink to="/" className="navlink"><h1>Quizolation - tagline here</h1></NavLink>
+          {/* <NavBar /> */}
         </header>
 
         <Switch>
-          <Route path="/" exact render={() => <h1>Hello there!</h1>} />
+          <Route exact path="/" component={LandingPage} />
 
           <Route
             exact
@@ -79,7 +83,10 @@ class App extends Component {
 
           <Route path="/results" component={ResultsPage} />
         </Switch>
+
+        <footer>Footer text here</footer>
       </main>
+      </div>
     );
   }
 }

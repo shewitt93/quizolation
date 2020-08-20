@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "regenerator-runtime/runtime";
+import '../styles/InputPage.css';
+
 
 class InputPage extends Component {
   state = {
