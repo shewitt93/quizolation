@@ -7,7 +7,10 @@ class ResultsPage extends Component {
     return (
       <div className="Results">
         <h1>Results</h1>
-        <div></div>
+        <div>{this.props.score[0].score1}</div>
+        <div>{this.props.score[1].score2}</div>
+        <div>{this.props.score[2].score3}</div>
+        <div>{this.props.score[3].score4}</div>
       </div>
     );
   }

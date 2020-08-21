@@ -1,5 +1,5 @@
-import React, { Component, useState } from "react";
-import { Link, Route } from "react-router-dom";
+import React, { Component } from "react";
+import { Link, Route, Switch } from "react-router-dom";
 
 import Question from "../components/Question";
 import ResultsPage from "./ResultsPage";
@@ -8,19 +8,13 @@ class QuestionPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      player1: props.player1,
-      player2: props.player2,
-      player3: props.player3,
-      player4: props.player4,
-      userScore: {
-        players: [
-          { player1s: "0" },
-          { player2s: "" },
-          { player3s: "" },
-          { player4s: "0" },
-        ],
-        scores: [{ score1: 0 }, { score2: 0 }, { score3: 0 }, { score4: 0 }],
-      },
+      userScore: [
+        { player1: props.player1, score1: 0 },
+        { player2: props.player2, score2: 0 },
+        { player3: props.player3, score3: 0 },
+        { player4: props.player4, score4: 0 },
+      ],
+      gameid: 0,
 
       numberOfQuestions: props.numberOfQuestions,
       difficulty: props.difficulty,
@@ -52,20 +46,179 @@ class QuestionPage extends Component {
       this.setState({ questions: data.results });
     }
   };
-  componentWillUnmount() {
-    this.getQuestions();
-  }
 
-  startGame = (e) => {
+  checkAnswer = (e) => {
     e.preventDefault();
-    this.setState({ inPlay: true });
+
+    const value = e.target.answer.value;
+    switch (this.state.gameid) {
+      case 1:
+        console.log(this.state.userScore[0]["score1"]);
+        console.log(
+          this.state.questions[this.state.currentQuestionIdx - 1].correct_answer
+        );
+        if (
+          value ===
+          this.state.questions[this.state.currentQuestionIdx - 1].correct_answer
+        ) {
+          let score = this.state.userScore[0]["score1"];
+          let finalscore = score + 1;
+          console.log(finalscore);
+
+          this.setState((s) => ({
+            userScore: {
+              ...s.userScore,
+              [0]: { ...s.userScore[0], score1: finalscore },
+            },
+          }));
+        } else if (
+          value !==
+          this.state.questions[this.state.currentQuestionIdx - 1].correct_answer
+        ) {
+          let score = this.state.userScore[0]["score1"];
+          let finalscore = score - 1;
+
+          this.setState((s) => ({
+            userScore: {
+              ...s.userScore,
+              [0]: { ...s.userScore[0], score1: finalscore },
+            },
+          }));
+        }
+        break;
+
+      case 2:
+        console.log(this.state.userScore[1]["score2"]);
+        console.log(
+          this.state.questions[this.state.currentQuestionIdx - 1].correct_answer
+        );
+        if (
+          value ===
+          this.state.questions[this.state.currentQuestionIdx - 1].correct_answer
+        ) {
+          let score = this.state.userScore[1]["score2"];
+          let finalscore = score + 1;
+          console.log(finalscore);
+
+          this.setState((s) => ({
+            userScore: {
+              ...s.userScore,
+              [1]: { ...s.userScore[1], score2: finalscore },
+            },
+          }));
+        } else if (
+          value !==
+          this.state.questions[this.state.currentQuestionIdx - 1].correct_answer
+        ) {
+          let score = this.state.userScore[1]["score2"];
+          let finalscore = score - 1;
+
+          this.setState((s) => ({
+            userScore: {
+              ...s.userScore,
+              [1]: { ...s.userScore[1], score2: finalscore },
+            },
+          }));
+        }
+        break;
+      case 3:
+        console.log(this.state.userScore[2]["score3"]);
+        console.log(
+          this.state.questions[this.state.currentQuestionIdx - 1].correct_answer
+        );
+        if (
+          value ===
+          this.state.questions[this.state.currentQuestionIdx - 1].correct_answer
+        ) {
+          let score = this.state.userScore[2]["score3"];
+          let finalscore = score + 1;
+          console.log(finalscore);
+
+          this.setState((s) => ({
+            userScore: {
+              ...s.userScore,
+              [2]: { ...s.userScore[2], score3: finalscore },
+            },
+          }));
+        } else if (
+          value !==
+          this.state.questions[this.state.currentQuestionIdx - 1].correct_answer
+        ) {
+          let score = this.state.userScore[2]["score3"];
+          let finalscore = score - 1;
+
+          this.setState((s) => ({
+            userScore: {
+              ...s.userScore,
+              [2]: { ...s.userScore[2], score3: finalscore },
+            },
+          }));
+        }
+      case 4:
+        console.log(this.state.userScore[3]["score4"]);
+        console.log(
+          this.state.questions[this.state.currentQuestionIdx - 1].correct_answer
+        );
+        if (
+          value ===
+          this.state.questions[this.state.currentQuestionIdx - 1].correct_answer
+        ) {
+          let score = this.state.userScore[3]["score4"];
+          let finalscore = score + 1;
+          console.log(finalscore);
+
+          this.setState((s) => ({
+            userScore: {
+              ...s.userScore,
+              [3]: { ...s.userScore[3], score4: finalscore },
+            },
+          }));
+        } else if (
+          value !==
+          this.state.questions[this.state.currentQuestionIdx - 1].correct_answer
+        ) {
+          let score = this.state.userScore[3]["score4"];
+          let finalscore = score - 1;
+
+          this.setState((s) => ({
+            userScore: {
+              ...s.userScore,
+              [3]: { ...s.userScore[3], score4: finalscore },
+            },
+          }));
+        }
+        break;
+    }
+  };
+  startGame1 = (e) => {
+    e.preventDefault();
+    this.setState({ inPlay: true, gameid: 1 });
+
+    this.goToNextQuestion();
+  };
+  startGame2 = (e) => {
+    e.preventDefault();
+    this.setState({ inPlay: true, gameid: 2 });
+
+    this.goToNextQuestion();
+  };
+  startGame3 = (e) => {
+    e.preventDefault();
+    this.setState({ inPlay: true, gameid: 3 });
+
+    this.goToNextQuestion();
+  };
+  startGame4 = (e) => {
+    e.preventDefault();
+    this.setState({ inPlay: true, gameid: 4 });
 
     this.goToNextQuestion();
   };
 
   goToNextQuestion = () => {
     if (this.state.currentQuestionIdx >= this.state.questions.length) {
-      this.props.history.push("/results");
+      console.log(this.state.userScore);
+      this.props.history.push("/questions/results");
     } else {
       console.log("to next question", this.state.currentQuestionIdx);
       const nextIdx = this.state.currentQuestionIdx + 1;
@@ -73,51 +226,58 @@ class QuestionPage extends Component {
       this.setState({ currentQuestionIdx: nextIdx });
     }
   };
-
-  checkAnswer = (e) => {
-    e.preventDefault();
-
-    const value = e.target.answer.value;
-    console.log(
-      this.state.questions[this.state.currentQuestionIdx - 1].correct_answer
-    );
-    if (value === this.state.questions[this.state.currentQuestionIdx - 1]) {
-      this.setState(this.state.userScore.useState(player1) + 1);
-    } else if (
-      value !==
-      this.state.questions[this.state.currentQuestionIdx - 1].correct_answer
-    ) {
-      this.setState(this.state.userScore.player1);
-    }
-  };
-
   render() {
-    console.log({ ...this.state.userScore.scores.score1 });
-
+    console.log(this.state);
     return (
       <div className="game-page-container">
         {!this.state.inPlay && (
-          <form onSubmit={this.startGame}>
-            <div>Are you ready {this.state.player1}?</div>
-            <input type="submit" value="Let's go!" />
-          </form>
+          <div>
+            <form onSubmit={this.startGame1}>
+              <div>Are you ready {this.state.userScore[0].player1}?</div>
+              <input type="submit" value="Let's go!" />
+            </form>
+            <form onSubmit={this.startGame2}>
+              <div>Are you ready {this.state.userScore[1].player2}?</div>
+              <input type="submit" value="Let's go!" />
+            </form>
+            <form onSubmit={this.startGame3}>
+              <div>Are you ready {this.state.userScore[2].player3}?</div>
+              <input type="submit" value="Let's go!" />
+            </form>
+            <form onSubmit={this.startGame4}>
+              <div>Are you ready {this.state.userScore[3].player4}?</div>
+              <input type="submit" value="Let's go!" />
+            </form>
+          </div>
         )}
-
-        <Route
-          path="/questions/:qNumber"
-          render={(props) => (
-            <Question
-              checkAnswer={this.checkAnswer}
-              next={this.goToNextQuestion}
-              question={this.state.questions[this.state.currentQuestionIdx - 1]}
-              // score={this.state.userScore}
-            />
-          )}
-        />
-        {/* <Route
-          path="/results"
-          render={(props) => <ResultsPage score={this.state.userScore} />}
-        /> */}
+        <Switch>
+          <Route
+            path="/questions/results"
+            render={(props) => (
+              <ResultsPage score={this.state.userScore} next={"hello"} />
+            )}
+          />
+          <Route
+            path="/questions/:qNumber"
+            render={(props) => (
+              <Question
+                checkAnswer={this.checkAnswer}
+                next={this.goToNextQuestion}
+                question={
+                  this.state.questions[this.state.currentQuestionIdx - 1]
+                }
+                gameid={this.state.gameid}
+                // score={this.state.userScore}
+              />
+            )}
+          />
+          {/* <Route
+            path="/questions/results"
+            render={(props) => (
+              <ResultsPage score={this.state.userScore} next={"hello"} />
+            )}
+          /> */}
+        </Switch>
       </div>
     );
   }
