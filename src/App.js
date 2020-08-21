@@ -6,8 +6,7 @@ import QuizForm from "./container/QuizForm";
 import QuestionPage from "./container/QuestionPage";
 import LandingPage from "./container/LandingPage";
 import { NavLink } from "react-router-dom";
-import './styles/App.css';
-
+import "./styles/App.css";
 
 class App extends Component {
   state = {
@@ -46,47 +45,51 @@ class App extends Component {
   render() {
     return (
       <div id="app">
+
       <main className="quiz">
         <header>
           <NavLink to="/" className="navlink"><h1 className="navlink">Quizolation</h1></NavLink>
           {/* <NavBar /> */}
         </header>
 
-        <Switch>
-          <Route exact path="/" component={LandingPage} />
 
-          <Route
-            exact
-            path="/homepage"
-            render={() => <QuizForm set={this.setQuizSettings} />}
-          />
+          <Switch>
+            <Route exact path="/" component={LandingPage} />
 
-          <Route
-            path="/questions"
-            render={(props) => (
-              <QuestionPage
-                {...props}
-                numberOfQuestions={this.state.numberOfQuestions}
-                difficulty={this.state.difficulty}
-                category={this.state.category}
-                player1={this.state.player1}
-                player2={this.state.player2}
-                player3={this.state.player3}
-                player4={this.state.player4}
-              />
-            )}
-          />
+            <Route
+              exact
+              path="/homepage"
+              render={() => <QuizForm set={this.setQuizSettings} />}
+            />
 
-          {/* <Route
+            <Route
+              path="/questions"
+              render={(props) => (
+                <QuestionPage
+                  {...props}
+                  numberOfQuestions={this.state.numberOfQuestions}
+                  difficulty={this.state.difficulty}
+                  category={this.state.category}
+                  player1={this.state.player1}
+                  player2={this.state.player2}
+                  player3={this.state.player3}
+                  player4={this.state.player4}
+                />
+              )}
+            />
+
+            {/* <Route
             path="/results"
             render={(props) => (
               <ResultsPage {...props} userScore={this.state.userScore} />
             )}
           /> */}
-        </Switch>
+          </Switch>
+
 
         <footer>Created by Atheer, Simon, Farid and Hannah</footer>
       </main>
+
       </div>
     );
   }
