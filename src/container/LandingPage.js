@@ -9,7 +9,13 @@ export default class LandingPage extends Component {
         return (
             <div className="content">
                  <h1>Hello there!</h1>
-                 <p>Instructions: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                 <h3>Are you bored in isolation? Then you need Quizolation!</h3>
+                 <ul>
+                     <li>After pressing new game, choose your player names, number of questions, difficulty level and category.</li>
+                     <li>Each player will take turns to answer the whole quiz</li>
+                     <li>To answer questions, select your answer, press Submit, then press Next Question</li>
+                     <li>Prepare to play! ⚡️</li>
+                 </ul>
                  <NavLink to="/homepage" className="newGame">New Game</NavLink>
             </div>
         )

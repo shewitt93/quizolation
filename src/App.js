@@ -45,13 +45,13 @@ class App extends Component {
   render() {
     return (
       <div id="app">
-        <main className="quiz">
-          <header>
-            <NavLink to="/" className="navlink">
-              <h1>Quizolation - tagline here</h1>
-            </NavLink>
-            {/* <NavBar /> */}
-          </header>
+
+      <main className="quiz">
+        <header>
+          <NavLink to="/" className="navlink"><h1 className="navlink">Quizolation</h1></NavLink>
+          {/* <NavBar /> */}
+        </header>
+
 
           <Switch>
             <Route exact path="/" component={LandingPage} />
@@ -86,8 +86,10 @@ class App extends Component {
           /> */}
           </Switch>
 
-          <footer>Footer text here</footer>
-        </main>
+
+        <footer>Created by Atheer, Simon, Farid and Hannah</footer>
+      </main>
+
       </div>
     );
   }
