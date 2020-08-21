@@ -48,7 +48,7 @@ class App extends Component {
       <div id="app">
       <main className="quiz">
         <header>
-          <NavLink to="/" className="navlink"><h1>Quizolation - tagline here</h1></NavLink>
+          <NavLink to="/" className="navlink"><h1 className="navlink">Quizolation</h1></NavLink>
           {/* <NavBar /> */}
         </header>
 
@@ -85,7 +85,7 @@ class App extends Component {
           /> */}
         </Switch>
 
-        <footer>Footer text here</footer>
+        <footer>Created by Atheer, Simon, Farid and Hannah</footer>
       </main>
       </div>
     );
