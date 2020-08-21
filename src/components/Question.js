@@ -27,10 +27,17 @@ class Question extends Component {
 
     return answers;
   };
-
+  playerNumber = () => {
+    if (this.props.gameid <= 3) {
+      return `Your turn player ${this.props.gameid + 1}`;
+    } else {
+      return "Next Question!";
+    }
+  };
   render() {
     let renderAnswers = this.shuffleArray();
-    let playerNumber = this.props.gameid + 1;
+    // let playerNumber = this.props.gameid + 1;
+    let playerNumber = this.playerNumber();
 
     return (
       <div>
@@ -40,7 +47,7 @@ class Question extends Component {
             <h2
               dangerouslySetInnerHTML={{ __html: this.props.question.question }}
             />
-            <h4>Your turn player {playerNumber}!</h4>
+            <h4> {playerNumber}!</h4>
           </div>
           <div className="answerContainer">
             <div className="answerOption">
@@ -93,7 +100,11 @@ class Question extends Component {
               />
             </div>
           </div>
-          <input type="submit" value="Submit Answer"></input>
+          <input
+            disabled={this.props.gameid ? this.props.gameid === 4 : ""}
+            type="submit"
+            value="Submit Answer"
+          ></input>
           <div className="next-question-button-container">
             <button onClick={this.props.next}>Next Question</button>
           </div>

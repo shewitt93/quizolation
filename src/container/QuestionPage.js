@@ -208,7 +208,7 @@ class QuestionPage extends Component {
       console.log("to next question", this.state.currentQuestionIdx);
       const nextIdx = this.state.currentQuestionIdx + 1;
       this.props.history.push(`/questions/${nextIdx}`);
-      this.setState({ currentQuestionIdx: nextIdx, gameid: 0 });
+      this.setState({ currentQuestionIdx: nextIdx, gameid: -1 });
     }
   };
   render() {
