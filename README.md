@@ -1,7 +1,7 @@
 # Quizolation
 A multiplayer quiz built using React.
 
-![Screenshot of Quizolation](https://i.imgur.com/qRqE6NN.png)
+![Screenshot of Quizolation](https://i.imgur.com/LB3tQm6.png)
 
 ## Installation & usage
 ### Installation
