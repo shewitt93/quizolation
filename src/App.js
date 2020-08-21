@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Switch, Route, withRouter } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import QuizForm from "./container/QuizForm";
-import ResultsPage from "./container/ResultsPage";
+// import ResultsPage from "./container/ResultsPage";
 import QuestionPage from "./container/QuestionPage";
 import LandingPage from "./container/LandingPage";
 import { NavLink } from "react-router-dom";
@@ -77,12 +77,12 @@ class App extends Component {
             )}
           />
 
-          <Route
+          {/* <Route
             path="/results"
             render={(props) => (
               <ResultsPage {...props} userScore={this.state.userScore} />
             )}
-          />
+          /> */}
         </Switch>
 
         <footer>Footer text here</footer>
