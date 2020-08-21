@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
-import '../styles/Question.css';
-
+import "../styles/Question.css";
 
 class Question extends Component {
   constructor(props) {
@@ -31,61 +30,75 @@ class Question extends Component {
 
   render() {
     let renderAnswers = this.shuffleArray();
+    let playerNumber = this.props.gameid + 1;
 
     return (
       <div>
         <form id="questionAnswer" onSubmit={this.props.checkAnswer}>
           <div className="questionContainer">
             <h3>Question Number: {this.props.match.params.qNumber}</h3>
-            <h2 dangerouslySetInnerHTML={{__html: this.props.question.question}} />
+            <h2
+              dangerouslySetInnerHTML={{ __html: this.props.question.question }}
+            />
+            <h4>Your turn player {playerNumber}!</h4>
           </div>
           <div className="answerContainer">
-          <div className="answerOption">
-            <input
-              required
-              type="radio"
-              name="answer"
-              id="1"
-              value={renderAnswers[0]}
-            ></input>
-            <label htmlFor="1" dangerouslySetInnerHTML={{__html: renderAnswers[0]}} />
-          </div>
-          <div className="answerOption">
-            <input
-              type="radio"
-              name="answer"
-              id="2"
-              value={renderAnswers[1]}
-            ></input>
-            <label htmlFor="2" dangerouslySetInnerHTML={{__html: renderAnswers[1]}} />
-          </div>
-          <div className="answerOption">
-            <input
-              type="radio"
-              name="answer"
-              id="3"
-              value={renderAnswers[2]}
-            ></input>
-            <label htmlFor="3" dangerouslySetInnerHTML={{__html: renderAnswers[2]}} />
-          </div>
-          <div className="answerOption">
-            <input
-              type="radio"
-              name="answer"
-              id="4"
-              value={renderAnswers[3]}
-            ></input>
-            <label htmlFor="4" dangerouslySetInnerHTML={{__html: renderAnswers[3]}} />
-          </div>
+            <div className="answerOption">
+              <input
+                required
+                type="radio"
+                name="answer"
+                id="1"
+                value={renderAnswers[0]}
+              ></input>
+              <label
+                htmlFor="1"
+                dangerouslySetInnerHTML={{ __html: renderAnswers[0] }}
+              />
+            </div>
+            <div className="answerOption">
+              <input
+                type="radio"
+                name="answer"
+                id="2"
+                value={renderAnswers[1]}
+              ></input>
+              <label
+                htmlFor="2"
+                dangerouslySetInnerHTML={{ __html: renderAnswers[1] }}
+              />
+            </div>
+            <div className="answerOption">
+              <input
+                type="radio"
+                name="answer"
+                id="3"
+                value={renderAnswers[2]}
+              ></input>
+              <label
+                htmlFor="3"
+                dangerouslySetInnerHTML={{ __html: renderAnswers[2] }}
+              />
+            </div>
+            <div className="answerOption">
+              <input
+                type="radio"
+                name="answer"
+                id="4"
+                value={renderAnswers[3]}
+              ></input>
+              <label
+                htmlFor="4"
+                dangerouslySetInnerHTML={{ __html: renderAnswers[3] }}
+              />
+            </div>
           </div>
           <input type="submit" value="Submit Answer"></input>
           <div className="next-question-button-container">
-          <button onClick={this.props.next}>Next Question</button>
-        </div>
+            <button onClick={this.props.next}>Next Question</button>
+          </div>
         </form>
         {/* <div>{this.props.score}</div> */}
-
-        
       </div>
     );
   }

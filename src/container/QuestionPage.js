@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link, Route, Switch } from "react-router-dom";
+import { Link, withRouter, Route, Switch } from "react-router-dom";
 
 import Question from "../components/Question";
 import ResultsPage from "./ResultsPage";
@@ -49,6 +49,10 @@ class QuestionPage extends Component {
 
   checkAnswer = (e) => {
     e.preventDefault();
+    console.log(this.state.gameid);
+    let playerNumber = this.state.gameid + 1;
+    console.log(playerNumber);
+    this.setState({ gameid: playerNumber });
 
     const value = e.target.answer.value;
     switch (this.state.gameid) {
@@ -196,34 +200,15 @@ class QuestionPage extends Component {
 
     this.goToNextQuestion();
   };
-  startGame2 = (e) => {
-    e.preventDefault();
-    this.setState({ inPlay: true, gameid: 2 });
-
-    this.goToNextQuestion();
-  };
-  startGame3 = (e) => {
-    e.preventDefault();
-    this.setState({ inPlay: true, gameid: 3 });
-
-    this.goToNextQuestion();
-  };
-  startGame4 = (e) => {
-    e.preventDefault();
-    this.setState({ inPlay: true, gameid: 4 });
-
-    this.goToNextQuestion();
-  };
 
   goToNextQuestion = () => {
     if (this.state.currentQuestionIdx >= this.state.questions.length) {
-      console.log(this.state.userScore);
       this.props.history.push("/questions/results");
     } else {
       console.log("to next question", this.state.currentQuestionIdx);
       const nextIdx = this.state.currentQuestionIdx + 1;
       this.props.history.push(`/questions/${nextIdx}`);
-      this.setState({ currentQuestionIdx: nextIdx });
+      this.setState({ currentQuestionIdx: nextIdx, gameid: 0 });
     }
   };
   render() {
@@ -234,18 +219,6 @@ class QuestionPage extends Component {
           <div>
             <form onSubmit={this.startGame1}>
               <div>Are you ready {this.state.userScore[0].player1}?</div>
-              <input type="submit" value="Let's go!" />
-            </form>
-            <form onSubmit={this.startGame2}>
-              <div>Are you ready {this.state.userScore[1].player2}?</div>
-              <input type="submit" value="Let's go!" />
-            </form>
-            <form onSubmit={this.startGame3}>
-              <div>Are you ready {this.state.userScore[2].player3}?</div>
-              <input type="submit" value="Let's go!" />
-            </form>
-            <form onSubmit={this.startGame4}>
-              <div>Are you ready {this.state.userScore[3].player4}?</div>
               <input type="submit" value="Let's go!" />
             </form>
           </div>
@@ -283,4 +256,4 @@ class QuestionPage extends Component {
   }
 }
 
-export default QuestionPage;
+export default withRouter(QuestionPage);
